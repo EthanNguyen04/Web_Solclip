@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLCLIPS</title>
+    <link rel="stylesheet" href="/style/nft.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+</head>
+<body style="background-color: #0f002b;">
+    <div class="container">
+        <nav>
+            <img src="img/logo.PNG" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="createNFT.html">NFT</a></li>
+                <li><a href="video.html">Game</a></li>
+                <li><a href="profile.html">Your profile</a></li>
+            </ul>
+            <div class="token" id="token" style="display: none;">
+                <p id="num-token">SOLC</p>
+            </div>
+            <button id="connectButton" class="btn_connect" onclick="connectWallet()">
+                Connect Wallet
+            </button>
+            <div class="dropdown" id="walletDropdown" style="display: none;">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="walletDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                ...
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><span id="publicKeyFull" class="dropdown-item-text"></span></li>
+                <li><button class="dropdown-item" onclick="disconnectWallet()" style="background-color: brown; border-radius: 10px;">Disconnect Wallet</button></li>
+              </ul>
+          </div>
+        </nav>
+
+        <div id="statusMessage" class="fixed-top alert alert-info text-center" style="display: none;">
+            <p id="messageContent"></p>
+        </div>
+
+        <div class="content-wrapper mt-5">
+            <div id="nftList" class="row"></div>
+        </div>
+    </div>
+
+    <!-- Buy NFT Modal -->
+    <div id="buyNftModal" class="modal">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Complete Your Purchase</h5>
+              <span class="close" onclick="closeBuyNftModal()">&times;</span>
+          </div>
+          <div class="modal-body">
+              <form id="buyNftForm">
+                  <div class="mb-3">
+                      <label for="idNFT" class="form-label">NFT ID</label>
+                      <input type="text" id="idNFT" name="idNFT" class="form-control" readonly>
+                  </div>
+                  <div class="mb-3">
+                      <label for="buyerId" class="form-label">Buyer Public Key</label>
+                      <input type="text" id="buyerId" name="buyerId" class="form-control" readonly>
+                  </div>
+                  <p id="message">Processing your purchase...</p>
+                  <div class="text-end">
+                      <button type="submit" class="btn btn-primary">Complete Purchase</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Add User Info</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUserForm" enctype="multipart/form-data">
+                        <img id="selectedImage" alt="Selected Image" style="display: none;">
+                        <div class="mb-3">
+                            <label for="userImage" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="userImage" name="img" accept="image/*" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userEmail" name="email" required>
+                            <label for="userName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="userName" name="name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallet Button -->
+    <button id="walletButton" class="btn btn-primary">
+        Ví
+    </button>
+
+    <!-- Wallet Dialog -->
+    <div id="walletDialog" class="wallet-dialog">
+        <div class="wallet-dialog-content">
+          <p style="color: #0f002b;">YOUR NFT</p>
+            <button id="closeWalletDialog" class="close-dialog">&times;</button>
+            <div id="nftResults" class="nft-container" style="flex-direction: row;">
+              <div class="nft-card">
+                <img src="nft-image-url.jpg" alt="NFT Name">
+                <h3>NFT Title</h3>
+                <p>ID: NFT_ID</p>
+                <button id="useNFT" class="btn btn-primary">Use NFT</button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/nft.js"></script>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9L6h6qHMJj0tFfkeTADc5ckbLbRM6vT5flA3hfDcvV2gOFl5xM7" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-cHD2l65WwxB5tWke4rxfz14cddZwRblDDglhMKQ5RP4FXRBLPfb5/c9LQgE5E2CVf" crossorigin="anonymous"></script>
+</body>
+</html>

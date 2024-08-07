@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Shorts Interface</title>
+    <link rel="stylesheet" href="style/watch.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <div>
+      <div class="back-to-home" onclick="window.location.href='index.html';">
+        <i class="fa-solid fa-house"></i>
+      </div>
+      <button
+        id="connectButton"
+        class="btn_connect"
+        onclick="connectWallet()"
+        style="margin-top: 50px"
+      >
+        Connect Wallet
+      </button>
+      <p id="pubkey"></p>
+      <div class="dropdown" id="walletDropdown" style="display: none">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="walletDropdownButton"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          ...
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><span id="publicKeyFull" class="dropdown-item-text"></span></li>
+          <li>
+            <button
+              class="dropdown-item"
+              onclick="disconnectWallet()"
+              style="background-color: brown; border-radius: 10px"
+            >
+              Disconnect Wallet
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="shorts-container">
+        <div class="shorts-video">
+          <video id="videoPlayer" controls autoplay></video>
+          <div class="shorts-details">
+            <div class="avtVideo">
+              <img
+                id="imgUser"
+                src="images/avarta.webp"
+                alt="User avatar"
+                style="width: 50px; height: 50px; object-fit: cover"
+              />
+              <p id="nameOfUser"></p>
+              <button>Follow</button>
+            </div>
+
+            <div class="details-text">
+              <p id="title"></p>
+              <p id="content"></p>
+            </div>
+          </div>
+        </div>
+        <div class="shorts-interactions">
+          <div class="interaction">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <span>1.9 Tr</span>
+          </div>
+
+          <div class="interaction" id="comment">
+            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+            <span>4.335</span>
+          </div>
+
+          <div class="interaction" id="donate" onclick="openDialog()"></div>
+
+          <div class="interaction">
+            <i class="fa-solid fa-share"></i>
+            <span>Chia sẻ</span>
+          </div>
+          <div class="interaction1">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+          <div class="interaction2">
+            <img id src="images/avt.png" alt="" />
+          </div>
+        </div>
+        <!-- comment -->
+        <div class="popup" id="popup">
+          <button id="claim">CLAIM</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="backToTop">
+      <div class="toTop" id="toTop">
+        <button id="prevBtn">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+      <div class="toBottom" id="toBottom">
+        <button id="nextBtn">
+          <i class="fa-solid fa-arrow-down"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="js/watch.js"></script>
+  </body>
+</html>

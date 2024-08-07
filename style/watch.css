@@ -1,0 +1,367 @@
+/* styles.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  margin-left: 200px;
+  padding: 80px 20px 20px;
+  flex: 1;
+  position: relative;
+}
+
+.shorts-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-left: 340px;
+}
+
+.shorts-video {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 600px;
+  border-radius: 6%;
+  z-index: 99;
+  object-fit: cover;
+}
+.shorts-video video {
+  width: 100%;
+  height: 100%;
+  border-radius: 6%;
+  object-fit: cover;
+}
+
+.shorts-details {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  background-color: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  border-radius: 6%;
+  z-index: 98;
+  background: rgba(0, 0, 0, 0, 5);
+}
+
+.shorts-details img {
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.details-text {
+  margin-left: 8px;
+  display: flex;
+  color: #000;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#title {
+  color: white;
+  width: 200px;
+  max-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details-text #content {
+  color: white;
+  width: 200px;
+  max-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shorts-interactions {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.interaction i {
+  font-size: 24px;
+  padding: 14px;
+  border-radius: 100%;
+  background: #dcdcdc;
+}
+.interaction i:hover {
+  background: black;
+  color: white;
+}
+.interaction span {
+  margin-top: 5px;
+  font-size: 14px;
+}
+.interaction1 i {
+  font-size: 22px;
+  padding: 14px 23px 14px 23px;
+  border-radius: 100%;
+  background: #dcdcdc;
+}
+.interaction1 i:hover {
+  background: black;
+  color: white;
+}
+.interaction2 {
+  margin-top: 12px;
+  /* padding: 14px 23px 14px 23px; */
+  background: gray;
+  border-radius: 8px;
+}
+.interaction2 img {
+  max-width: 45px;
+  max-height: 45px;
+  border-radius: 8px;
+}
+.avtVideo {
+  display: flex;
+  align-items: center;
+  flex: row;
+}
+.avtVideo p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.avtVideo button {
+  padding: 8px;
+  border-radius: 20px 20px 20px 20px;
+  border: none;
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+  flex: row;
+}
+.searchHeader .mic {
+  border-radius: 50%;
+  margin-left: 10px;
+  font-size: 18px;
+  border: none;
+}
+.searchHeader .mic i {
+  padding: 10px 8px 10px 8px;
+}
+
+video::-webkit-media-controls {
+  display: none;
+}
+
+.barLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* ;  position:fixed;
+    top:0;
+    left:3% */
+  z-index: 1000;
+  background: white;
+}
+.barLogo .logo img {
+  max-width: 150px;
+  height: auto;
+}
+.barLogo .barClick {
+  font-size: 22px;
+  margin-bottom: 3px;
+}
+.menuIcon {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100px;
+  left: 0%;
+}
+.iconMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.iconMenu i {
+  font-size: 24px;
+}
+.iconMenu p {
+  font-size: 12px;
+}
+.backToTop {
+  position: fixed;
+  bottom: 40%;
+  right: 2%;
+}
+.backToTop button {
+  padding: 14px 18px 14px 18px;
+  background: #dcdcdc;
+  border-radius: 50%;
+  border: none;
+}
+.backToTop button:hover {
+  background: black;
+  color: white;
+}
+.backToTop button i {
+  font-size: 23px;
+}
+.backToTop .toTop {
+  margin-bottom: 10px;
+}
+.hidden {
+  display: none;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  right: 0%;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+  width: 350px;
+}
+.shorts-container {
+  transition: transform 0.5s ease;
+  position: relative;
+}
+
+.commentShow .peopleComment {
+  display: flex;
+  flex: row;
+}
+.commentShow .peopleComment .avt img {
+  max-width: 45px;
+  max-height: 45px;
+  border-radius: 50%;
+}
+.commentShow .peopleComment .content .name {
+  display: flex;
+  flex: row;
+  margin-left: 10px;
+  font-size: 14px;
+  /* background:red; */
+}
+.commentShow .peopleComment .content .name .user {
+  font-weight: bold;
+  margin-right: 10px;
+}
+.commentShow .peopleComment .content .text {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.commentShow .peopleComment .content .camXuc {
+  display: flex;
+  flex: row;
+  margin-left: 10px;
+  font-size: 14px;
+  align-items: center;
+}
+.commentShow .peopleComment .content .camXuc p i {
+  font-size: 22px;
+}
+.commentShow .peopleComment .content .camXuc .dis {
+  margin-left: 15px;
+  margin-right: 20px;
+}
+.commentShow .peopleComment .content .camXuc .ph {
+  font-weight: bold;
+}
+.commentShow .peopleComment .content .phanHoi p {
+  font-weight: bold;
+  color: blue;
+}
+
+/* Áp dụng cho màn hình có chiều rộng tối đa 768px (thiết bị di động) */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 40px;
+  }
+
+  .shorts-container {
+    margin-left: 10px;
+  }
+
+  .backToTop {
+    display: none;
+  }
+}
+
+/* Áp dụng cho màn hình từ 769px đến 1024px (máy tính bảng) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-content {
+    margin-left: 200px;
+  }
+
+  .shorts-container {
+    margin-left: 100px;
+  }
+}
+.back-to-home {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 24px;
+  color: #000;
+}
+.back-to-home:hover {
+  color: #007bff; /* Change color on hover */
+}
+/* Modal background */ /* Modal background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

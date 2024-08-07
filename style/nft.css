@@ -1,0 +1,402 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #0f002b;
+    color: #fff;
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #0f002b;
+    color: #0f002b;
+}
+
+.solana-text {
+    background: linear-gradient(90deg, #00FFA3, #DC1FFF, #00F5FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 180px;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+nav ul {
+    flex: 1;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav .token {
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 50px;
+    text-justify: auto;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: #3d3c3c;
+    border-radius: 20px;
+    border: 1px solid #fff;
+}
+
+nav .btn_connect {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: #3d3c3c;
+}
+
+nav .btn_connect:hover {
+    border-radius: 30px;
+    background-color: #524f4f;
+    padding: 10px 20px;
+    color: #00FFA3;
+}
+
+.dropdown-menu {
+    background-color: #AEAEAE;
+    border: 1px solid #fff;
+}
+
+.content-wrapper {
+    display: flex;
+    height: calc(100% - 70px); /* Subtracting height of nav bar */
+}
+
+.left-content, .right-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.left-content {
+    order: 1; /* Move left-content to the right */
+    flex-direction: column; /* Change to column layout */
+}
+
+.right-content {
+    order: 2; /* Move right-content to the left */
+}
+
+.right-content img {
+    width: 100%;
+    height: auto;
+}
+
+.left-content p {
+    font-size: 28px;
+    margin-bottom: 20px; /* Add margin for spacing */
+}
+
+.left-content .btn_start {
+    background: linear-gradient(90deg, #00FFA3, #DC1FFF, #00F5FF);
+    border: none;
+    color: #000000;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                -1px -1px 2px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.left-content .btn_start:hover {
+    padding: 15px 15px; /* Slightly increase padding on hover */
+    background: linear-gradient(90deg, #00F5FF, #DC1FFF, #00FFA3); /* Reverse gradient on hover */
+    font-size: 25px;
+    border-radius: 30px;
+}
+#selectedImage {
+    display: no;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Đảm bảo các card NFT có cùng kích thước */
+.card {
+    flex: 0 0 30%;
+    height: 100%; /* Đảm bảo chiều cao của card bao gồm tất cả nội dung */
+    width: 300px; /* Giới hạn chiều rộng của card */
+    margin: 20px; /* Canh giữa card */
+}
+
+/* Đảm bảo các hình ảnh NFT có cùng kích thước */
+.card-img-top {
+    width: 300px; /* Hình ảnh chiếm toàn bộ chiều rộng của card */
+    height: 300px; /* Đặt chiều cao cố định cho hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh vừa vặn trong khung mà không bị méo */
+}
+#nftList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* Space between cards */
+}
+
+/* Card styling */
+.card {
+    flex: 0 1 30%; /* Allow cards to grow/shrink within 30% of the container width */
+    max-width: 300px; /* Set a max width for the cards */
+    margin: 10px 0; /* Vertical spacing */
+    background-color: #1a1a1a; /* Dark background for cards */
+    border: 1px solid #333; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* NFT Image styling */
+.card-img-top {
+    width: 300px; /* Make image fill the card width */
+    height: 300px; /* Fixed height for images */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Card body */
+.card-body {
+    padding: 15px;
+    color: #fff; /* White text color */
+}
+
+/* Card title */
+.card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Card text */
+.card-text {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Button */
+.btn {
+    background-color: #00FFA3;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00DC94;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure modal is on top of other content */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+}
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    width: 80%;
+    max-width: 600px; /* Max width to prevent it from being too large on wide screens */
+}
+.modal-header {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-title {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+.close {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.close:hover {
+    color: #000;
+}
+.modal-body {
+    padding: 20px 0;
+}
+.form-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    width: 100%;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.alert-info {
+    margin: 0;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #d9edf7;
+    color: #31708f;
+    border: 1px solid #bce8f1;
+}
+/* Styles for the Wallet Button */
+#walletButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it is on top */
+}
+
+/* Styles for the Wallet Dialog */
+.wallet-dialog {
+    position: fixed;
+    bottom: 80px; /* Adjust as needed */
+    right: 20px;
+    width: 650px; /* Increased width */
+    max-width: 80vw; /* Max width for responsiveness */
+    height: 545px; /* Increased height */
+    max-height: 80vh; /* Max height for responsiveness */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it is on top */
+    display: none;
+    flex-direction: column;
+    overflow-y: auto; /* Add scroll if content exceeds height */
+}
+
+.wallet-dialog-content {
+    padding: 20px;
+    position: relative;
+}
+
+.close-dialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Style for the container holding NFT cards */
+.nft-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    gap: 10px; /* Space between cards */
+    justify-content: flex-start; /* Align cards to the start of the container */
+}
+
+/* Style for individual NFT cards */
+.nft-card {
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    padding: 10px; /* Padding inside the card */
+    text-align: center; /* Center align text */
+    width: 200px; /* Adjust width as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for card */
+}
+
+.nft-card img {
+    width: 200px; /* Make image fit the width of the card */
+    height: 200px; /* Maintain aspect ratio */
+    border-bottom: 1px solid #ddd; /* Optional border below image */
+    object-fit: cover;
+}
+
+.nft-card h3 {
+    font-size: 1.2em; /* Adjust font size for the title */
+    margin: 10px 0; /* Margin around title */
+}
+
+.nft-card p {
+    font-size: 0.9em; /* Adjust font size for the description */
+    color: #666; /* Optional color for text */
+}

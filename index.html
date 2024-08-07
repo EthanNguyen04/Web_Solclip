@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="/style/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-color: #0f002b;">
     <div class="container">
         <nav>
             <img src="img/logo.PNG" class="logo">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">NFT</a></li>
-                <li><a href="#">Game</a></li>
-                <li><a href="#">Wallet</a></li>
+                <li><a href="nft.html">NFT</a></li>
+                <li><a href="profile.html">Your profile</a></li>
             </ul>
-            <div class="token" id="token">
-                <p>00 SOLC</p>
+            <div class="token" id="token" style="display: none;">
+                <p id="num-token">SOLC</p>
             </div>
             <button id="connectButton" class="btn_connect" onclick="connectWallet()">
                 Connect Wallet
             </button>
-            <div class="dropdown"  id="walletDropdown" style="display: none;">
+            <div class="dropdown" id="walletDropdown" style="display: none;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="walletDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
                   ...
                 </button>
@@ -31,108 +30,60 @@
                   <li><span id="publicKeyFull" class="dropdown-item-text"></span></li>
                   <li><button class="dropdown-item" onclick="disconnectWallet()" style="background-color: brown; border-radius: 10px;">Disconnect Wallet</button></li>
                 </ul>
-              </div>
+            </div>
         </nav>
 
         <div id="statusMessage" class="fixed-top alert alert-info text-center" style="display: none;">
             <p id="messageContent"></p>
         </div>
-        
 
-        <div class="content">
-            <p class="solana-text">
-                SolClips is an entertainment platform consisting of short videos you can mine our SOLC token by creating short videos that attract viewers or you can watch videos to earn SOLC daily
-            </p>
-            <button id="startButton" class="btn_start">
-                Get start
-            </button>
+        <div class="content-wrapper">
+            <div class="right-content">
+            <div class="left-content">
+                <p class="solana-text">
+                    SolClips is an entertainment platform consisting of short videos you can mine our SOLC token by creating short videos that attract viewers or you can watch videos to earn SOLC daily
+                </p>
+                <button id="startButton" class="btn_start">
+                    <a href="watch.html" style="color: #0f002b;">Get started</a>
+                </button>
+            </div>
+            <div class="right-content">
+                <img src="./img/background.jpg" alt="Background">
+            </div>
         </div>
-        
-        <div class="div">
-            <p>LOng test</p>
-        </div>
-
     </div>
-    <script>
-        // Function to get Phantom provider
-        const getProvider = () => {
-            if ('phantom' in window) {
-                const provider = window.phantom?.solana;
-    
-                if (provider?.isPhantom) {
-                    return provider;
-                }
-            }
-            window.open('https://phantom.app/', '_blank');
-        };
-    
-        // Function to connect wallet
-        const connectWallet = async () => {
-            const provider = getProvider();
-            try {
-                const resp = await provider.connect();
-                const publicKey = resp.publicKey.toString();
-                showMessage(`Connected: ${publicKey}`);
-                document.getElementById('connectButton').style.display = 'none';
-                document.getElementById('walletDropdown').style.display = 'block';
-                document.getElementById('token').style.display = 'block';
-                document.getElementById('walletDropdownButton').innerText = `...${publicKey.slice(-5)}`;
-                document.getElementById('publicKeyFull').innerText = publicKey;
-                
-                // Save connection state in localStorage
-                localStorage.setItem('phantomConnected', 'true');
-            } catch (err) {s
-                console.error(err);
-                showMessage(`Error: ${err.message}`);
-            }
-        };
-    
-        // Function to disconnect wallet
-        const disconnectWallet = async () => {
-            const provider = getProvider();
-            try {
-                await provider.disconnect();
-                showMessage('Disconnected');
-                document.getElementById('connectButton').style.display = 'block';
-                document.getElementById('walletDropdown').style.display = 'none';
-                document.getElementById('token').style.display = 'none';
-                // Remove connection state from localStorage
-                localStorage.removeItem('phantomConnected');
-            } catch (err) {
-                console.error(err);
-                showMessage(`Error: ${err.message}`);
-            }
-        };
-    
-        // Auto connect wallet if not connected on page load
-        document.addEventListener('DOMContentLoaded', async () => {
-            const provider = getProvider();
-            
-            // Check localStorage for previous connection
-            const isPreviouslyConnected = localStorage.getItem('phantomConnected');
-            
-            if (!provider.isConnected && isPreviouslyConnected === 'true') {
-                await connectWallet();
-            }
-        });
-    
-        const showMessage = (message, duration = 3000) => {
-            const statusMessage = document.getElementById('statusMessage');
-            const messageContent = document.getElementById('messageContent');
-    
-            // Set the message content
-            messageContent.innerText = message;
-    
-            // Show the status message
-            statusMessage.style.display = 'block';
-    
-            // Hide the status message after `duration` milliseconds
-            setTimeout(() => {
-                statusMessage.style.display = 'none';
-            }, duration);
-        };
-    </script>
-    
+
+   <!-- Form thêm thông tin người dùng -->
+   <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add User Info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm" enctype="multipart/form-data">
+                    <img id="selectedImage" alt="Selected Image">
+                    <div class="mb-3">
+                        <label for="userImage" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="userImage" name="img" accept="image/*" required>
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="userEmail" name="email" required>
+                        <label for="userName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="userName" name="name" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
